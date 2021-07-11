@@ -14,8 +14,29 @@ export default {
         }})
     },
     Hashtag:{
-        //여기에 computing
+        photos:({id},{page},{loggedInUser})=>{
+            if(!loggedInUser){
+                return false;
+            }
+            return client.hashtag.findUnique({
+                where:{
+                    id
+                }
+            }).photos({
+                take:5,
+                skip:(page-1)*5
+            });
+        },
+        totalPhotos:({id})=>{
+            return client.photo.count({
+                where:{
+                    hashtags:{
+                        some:{
+                            id
+                        }
+                    }
+                }
+            });
+        }
     }
 }
-//Photo Model에 저장되는 user는 userId를 참조한다. --> schema.prisma 참고
-//Photo Model에 저장되는 hashtag들은 photo의 id를 이용한다.
