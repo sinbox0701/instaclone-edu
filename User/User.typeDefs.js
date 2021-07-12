@@ -10,6 +10,7 @@ export default gql`
         password: String!
         bio: String
         avatar: String
+        photos: [Photo]
         totalFollowing: Int!
         totalFollowers: Int!
         isMe: Boolean!
