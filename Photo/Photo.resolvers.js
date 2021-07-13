@@ -11,7 +11,8 @@ export default {
                     id
                 }
             }
-        }})
+        }}),
+        //likes: 여기에 computing photo의 id를 받아서 그 photo의 like count 하기
     },
     Hashtag:{
         photos:({id},{page},{loggedInUser})=>{
