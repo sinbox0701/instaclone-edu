@@ -12,7 +12,7 @@ export default {
                 }
             }
         }}),
-        //likes: 여기에 computing photo의 id를 받아서 그 photo의 like count 하기
+        likes: ({id}) => client.like.count({where:{photoId:id}}),
     },
     Hashtag:{
         photos:({id},{page},{loggedInUser})=>{
