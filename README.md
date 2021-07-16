@@ -23,15 +23,15 @@ API
 - [x] See Hashtag
 - [x] Search Photos
 - [x] Edit Photo
-- [ ] Like / Unlike Photo
-- [ ] See Photo Likes
-- [ ] See Feed
-- [ ] See Photo Comments
+- [x] Like / Unlike Photo
+- [x] See Photo Likes
+- [x] See Feed
+- [x] See Photo Comments
 - [ ] Delete Photo
 
 ## Comments
 
-- [ ] Comment on Photo
+- [x] Comment on Photo
 - [ ] Delete Comment
 - [ ] Edit Comment
 
