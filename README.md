@@ -6,7 +6,7 @@ API
 
 - [x] Create Account
 - [x] See Profile
-- x] Login
+- [x] Login
 - [x] Edit Profile
 - [x] Change Avatar
 - [x] Follow User
@@ -18,7 +18,7 @@ API
 
 ## Photos
 
-- [ ] Upload Photo (Parse #)
+- [x] Upload Photo (Parse #)
 - [x] See Photo
 - [x] See Hashtag
 - [x] Search Photos
@@ -32,7 +32,7 @@ API
 ## Comments
 
 - [x] Comment on Photo
-- [ ] Delete Comment
+- [x] Delete Comment
 - [ ] Edit Comment
 
 ## Refactor
