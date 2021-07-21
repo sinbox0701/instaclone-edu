@@ -37,11 +37,11 @@ API
 
 ## Refactor
 
-- [ ] Mutation Responses
+- [x] Mutation Responses
 
 ## Extras
 
-- [ ] S3 Image Upload
+- [x] S3 Image Upload
 
 ## DMs
 

@@ -18,17 +18,23 @@ export const getUser = async (token) => {
     }
 };
 
-export const protectedResolver = (ourResolver) => (
+export const protectedResolver = (ourResolver) => (// 우리가 하는 mutation과 query를 가로채서 로그인 안했으면 --> ok:false, error 응답
     root,
     args,
     context,
     info
 ) => {
     if(!context.loggedInUser){
-        return {
-            ok:false,
-            error:"로그인 하셈"
-        };
+        const query = info.operation.operation === "query";
+        if(query){
+            return null;
+        }
+        else{
+            return {
+                ok:false,
+                error:"로그인 하셈"
+            };
+        }
     }
     return ourResolver(root,args,context,info);
 }
