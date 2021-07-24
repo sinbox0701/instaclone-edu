@@ -45,8 +45,8 @@ API
 
 ## DMs
 
-- [ ] See Rooms
-- [ ] Send Message (Create Room)
+- [x] See Rooms
+- [x] Send Message (Create Room)
 - [ ] See Room
 - [ ] Computed Fields
 - [ ] See (Read) Message
