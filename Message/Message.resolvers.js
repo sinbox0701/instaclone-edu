@@ -8,6 +8,24 @@ export default {
                 roomId:id
             }
         }),
-        unreadTotal:()=>0 //임의로 설정 한 것
+        unreadTotal:({id},_,{loggedInUser})=>{
+            if(!loggedInUser){
+                return 0;
+            }
+            return client.message.count({
+                where:{
+                    read:false,
+                    roomId:id,
+                    user:{
+                        id:{
+                            not:loggedInUser.id
+                        }
+                    }
+                }
+            })
+        },
+    },
+    Message:{
+        user:({id}) => client.message.findUnique({where:id}).user(),
     }
 }
