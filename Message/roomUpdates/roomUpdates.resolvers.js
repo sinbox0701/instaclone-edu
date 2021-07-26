@@ -8,9 +8,14 @@ export default {
         roomUpdates:{
             subscribe: async (root,args,context,info) => {
                 const {id} = args;
-                const room = await client.room.findUnique({
+                const room = await client.room.findFirst({
                     where:{
-                        id
+                        id,
+                        users:{
+                            some:{
+                                id:context.loggedInUser.id
+                            }
+                        }
                     },
                     select:{
                         id:true
@@ -21,8 +26,26 @@ export default {
                 }
                 return withFilter(
                     () => pubsub.asyncIterator(NEW_MESSAGE),
-                    ({roomUpdates},{id}) => {
-                        return roomUpdates.roomId === id;
+                    async ({roomUpdates},{id},{loggedInUser}) => {
+                        if(roomUpdates.roomId === id){
+                            const room = await client.room.findFirst({
+                                where:{
+                                    id,
+                                    users:{
+                                        some:{
+                                            id:loggedInUser.id
+                                        }
+                                    }
+                                },
+                                select:{
+                                    id:true
+                                }
+                            });
+                            if(!room){
+                                return false;
+                            }
+                            return true
+                        }
                     }//filtering 조건
                 )(root,args,context,info);
             }

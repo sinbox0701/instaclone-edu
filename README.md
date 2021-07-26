@@ -50,4 +50,4 @@ API
 - [x] See Room
 - [x] Computed Fields
 - [x] See (Read) Message
-- [ ] Realtime Messages
+- [x] Realtime Messages

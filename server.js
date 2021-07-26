@@ -9,10 +9,28 @@ import { getUser } from "./User/User.utils";
 const apollo = new ApolloServer({
     typeDefs,
     resolvers,
-    context: async ({req}) => {
-        if(req){
+    context: async (ctx) => {
+        if(ctx.req){
             return {
-                loggedInUser: await getUser(req.headers.token)
+                loggedInUser: await getUser(ctx.req.headers.token)
+            }
+        }else{
+            const {
+                connection:{context}
+            } = ctx;
+            return {
+                loggedInUser: context.loggedInUser
+            }
+        }
+    },
+    subscriptions:{
+        onConnect: async({token}) => {
+            if(!token){
+                throw new Error("You can't Listen")
+            }
+            const loggedInUser = await getUser(token);
+            return {
+                loggedInUser
             }
         }
     }
