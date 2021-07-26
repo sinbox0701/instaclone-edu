@@ -32,7 +32,7 @@ export default {
                     }
                 });
                 return {
-                    ok:false
+                    ok:true
                 };
             }
         })
