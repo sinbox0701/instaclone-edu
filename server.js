@@ -18,6 +18,7 @@ const apollo = new ApolloServer({
 const PORT = process.env.PORT;
 
 const app = express();
+apollo.installSubscriptionHandlers(app); //이부분!
 app.use(logger("tiny"));
 
 apollo.applyMiddleware({app}); 
