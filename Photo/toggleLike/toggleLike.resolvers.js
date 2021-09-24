@@ -22,17 +22,7 @@ export default {
                     photoId:id
                 }
             };
-            /*
-                const like = await client.like.findUnique({
-                    where:{
-                        userId_photoId:{
-                            userId:loggedInUser.id,
-                            photoId:id
-                        }
-                    }
-                });
-                where절이 반복되서 likeWhere를 만들고 사용
-             */
+         
             const like = await client.like.findUnique({
                 where:likeWhere
             });
